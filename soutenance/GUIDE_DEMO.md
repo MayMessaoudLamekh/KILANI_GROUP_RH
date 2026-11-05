@@ -2,7 +2,9 @@
 
 Vous avez **deux options** pour la démo (slide 12 « Démonstration ») :
 
-- **Option A — la vidéo** : `soutenance/Demo_Kilani_HR.mp4` (4 min 25 s, sans son). Vous la lancez et vous parlez par-dessus. C'est la solution la plus sûre.
+- **Option A — la vidéo** : `soutenance/Demo_Kilani_HR.mp4` (2 min 24 s, sans son). Vous la lancez et vous parlez par-dessus. C'est la solution la plus sûre.
+
+**Durée totale visée : environ 9 minutes** : environ 6 min 30 s de parole (le texte de chaque slide est dans les notes du présentateur, avec sa durée) et 2 min 24 s de vidéo.
 - **Option B — en direct** : vous suivez le scénario ci-dessous. Gardez la vidéo prête comme plan B.
 
 ---
