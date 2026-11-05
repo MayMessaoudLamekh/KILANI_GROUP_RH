@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../models/demande_conge_model.dart';
+import '../models/user_model.dart';
 import '../services/api_service.dart';
 
 class ValidationScreen extends StatefulWidget {
-  const ValidationScreen({super.key});
+  final UserModel currentUser;
+
+  const ValidationScreen({super.key, required this.currentUser});
 
   @override
   State<ValidationScreen> createState() => _ValidationScreenState();
@@ -134,7 +137,12 @@ class _ValidationScreenState extends State<ValidationScreen> {
                           itemCount: _demandes.length,
                           itemBuilder: (context, index) {
                             final d = _demandes[index];
-                            final isPending = d.acceptationSuperieur == 'En attente';
+                            // Les RH font la validation finale, après celle du supérieur (N+1)
+                            final isRh = widget.currentUser.statut == 'Ressources Humaines' || widget.currentUser.statut == 'Administrateur';
+                            final isPending = isRh
+                                ? d.acceptationSuperieur == 'Validé' && d.acceptationRessource == 'En attente'
+                                : d.acceptationSuperieur == 'En attente';
+                            final statutAffiche = isRh && d.acceptationSuperieur == 'Validé' ? d.acceptationRessource : d.acceptationSuperieur;
 
                             return Card(
                               margin: const EdgeInsets.only(bottom: 16),
@@ -211,13 +219,13 @@ class _ValidationScreenState extends State<ValidationScreen> {
                                         padding: const EdgeInsets.all(8),
                                         alignment: Alignment.center,
                                         decoration: BoxDecoration(
-                                          color: d.acceptationSuperieur == 'Validé' ? Colors.green.shade50 : Colors.red.shade50,
+                                          color: statutAffiche == 'Validé' ? Colors.green.shade50 : Colors.red.shade50,
                                           borderRadius: BorderRadius.circular(8),
                                         ),
                                         child: Text(
-                                          'Statut : ${d.acceptationSuperieur}',
+                                          'Statut : $statutAffiche',
                                           style: TextStyle(
-                                            color: d.acceptationSuperieur == 'Validé' ? Colors.green.shade800 : Colors.red.shade800,
+                                            color: statutAffiche == 'Validé' ? Colors.green.shade800 : Colors.red.shade800,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),

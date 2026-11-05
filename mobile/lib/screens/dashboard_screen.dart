@@ -248,7 +248,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 children: [
                   Expanded(
                     child: GestureDetector(
-                      onTap: () => widget.onNavigate(3),
+                      onTap: () => widget.onNavigate(4),
                       child: Card(
                         color: AppTheme.lightGold,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),

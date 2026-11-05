@@ -208,20 +208,32 @@ class _MissionValidationScreenState extends State<MissionValidationScreen> {
                                 ],
                               ),
                               const SizedBox(height: 6),
-                              Row(
+                              // Wrap : une destination longue passe à la ligne au lieu de déborder
+                              Wrap(
+                                spacing: 16,
+                                runSpacing: 6,
                                 children: [
-                                  const Icon(Icons.location_on, size: 18, color: Color(0xFFB89B72)),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    mission.destination,
-                                    style: TextStyle(fontSize: 14, color: Colors.grey[800]),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(Icons.location_on, size: 18, color: Color(0xFFB89B72)),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        mission.destination,
+                                        style: TextStyle(fontSize: 14, color: Colors.grey[800]),
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(width: 16),
-                                  const Icon(Icons.calendar_today, size: 18, color: Color(0xFFB89B72)),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    '${mission.jourDebut} → ${mission.jourFin}',
-                                    style: TextStyle(fontSize: 14, color: Colors.grey[800]),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(Icons.calendar_today, size: 18, color: Color(0xFFB89B72)),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        '${mission.jourDebut} → ${mission.jourFin}',
+                                        style: TextStyle(fontSize: 14, color: Colors.grey[800]),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),

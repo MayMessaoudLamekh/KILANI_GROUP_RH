@@ -71,7 +71,7 @@ class _MainShellState extends State<MainShell> {
       LeaveListScreen(currentUser: widget.currentUser),
       const MissionListScreen(),
       const AttestationListScreen(),
-      if (isManagerOrRh) const ValidationScreen(),
+      if (isManagerOrRh) ValidationScreen(currentUser: widget.currentUser),
     ];
 
     return Scaffold(

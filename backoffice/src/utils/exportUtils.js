@@ -1,5 +1,5 @@
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 import { format } from 'date-fns';
 
@@ -25,7 +25,7 @@ export const exportToPDF = (data, columns, title = 'Rapport', filename = 'export
     return val !== null && val !== undefined ? String(val) : '';
   }));
 
-  doc.autoTable({
+  autoTable(doc, {
     startY: 30,
     head: head,
     body: body,
